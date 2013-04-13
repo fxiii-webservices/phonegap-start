@@ -33,10 +33,30 @@
                 <p class="status complete blink hide">Device is Ready</p>
             </div>
         </div>-->
+        <script src="http://cloud.github.com/downloads/uxebu/bonsai/bonsai-0.4.0.min.js"></script>
         <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="http://forl3-fxiii.dotcloud.com/static/js/lib.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
-            //app.initialize();
+            var player = document.getElementById('player');
+            
+            var w = 700;
+            var h = 500;
+            
+            var b = bonsai.run(player, {
+            code: document.getElementById('bs').innerHTML,
+            height: h,
+            width: w,
+            framerate: 40
+            });
+            
+            window.onresize = function() {
+            player.style.left = (window.innerWidth - 202)/2 - w/2 + 'px';
+            player.style.top = window.innerHeight/2 - h/2 + 'px';
+            };
+            
+            window.onresize();
+
         </script>
     </body>
 </html>
