@@ -21,12 +21,14 @@ define(["text!pairing/template.html"], function (T) {
           }
         },
         pair: function(){
+            var view = this;
             var FSM = new Forlr.FSM(_Forlr.protocols.request);
             FSM.start(Forlr,this.model.get("code"));
             FSM.on("got",function(self,ev,p){
-                alert(p);
-            })
-            FSM.on("timeout",_l);
+                view.model.set("room",p);
+                view.trigger("gotRoom",p);
+            });
+            FSM.on("timeout",this.trigger("timeout"));
         },
         render: function() {
             this.$el.html(this._t(this.model.toJSON()));
