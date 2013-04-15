@@ -21,7 +21,12 @@ define(["text!pairing/template.html"], function (T) {
           }
         },
         pair: function(){
-            
+            var FMS = new Forlr.FSM(_Forlr.protocols.request);
+            FMS.start(_Forlr,this.model.get("code"));
+            FMS.on("got",function(self,ev,p){
+                alert(p);
+            })
+            FSM.on("timeout",_l);
         },
         render: function() {
             this.$el.html(this._t(this.model.toJSON()));
