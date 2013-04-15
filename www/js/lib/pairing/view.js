@@ -10,15 +10,16 @@ define(["text!pairing/template.html"], function (T) {
             _.bindAll(this,"ask","pair","render");
             this._t = Handlebars.compile(T);
             this.model = new Backbone.Model();
-            this.model.set("code",Math.random().toString().slice(2,11));
-            this.model.on("change:code",this.render);
+            this.model.set({
+                code:"click to pair");
+            this.model.on("change",this.render);
         },
         ask: function(){
-          var x = prompt("setCode");
-          if (x !== null){
+            var x = prompt("setCode");
+            if (x !== null){
               this.model.set("code",x);
               this.pair();
-          }
+            }
         },
         pair: function(){
             var view = this;
