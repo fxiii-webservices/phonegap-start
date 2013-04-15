@@ -1,4 +1,4 @@
-define(["text!pairing/template"], function (T) {
+define(["text!pairing/template.html"], function (T) {
     return Backbone.View.extend({
         tagName: "div",
         className: "pairing",
