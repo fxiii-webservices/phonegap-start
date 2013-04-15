@@ -4,7 +4,7 @@ define(["text!pairing/template.html"], function (T) {
         className: "pairing",
         
         events: {
-            "h1":"ask"
+            "click h1":"ask"
         },
         initialize: function(){
             this._t = Handlebars.compile(T);
