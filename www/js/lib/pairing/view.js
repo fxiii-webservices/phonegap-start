@@ -22,7 +22,7 @@ define(["text!pairing/template.html"], function (T) {
         },
         pair: function(){
             var FMS = new Forlr.FSM(_Forlr.protocols.request);
-            FMS.start(_Forlr,this.model.get("code"));
+            FMS.start(Forlr,this.model.get("code"));
             FMS.on("got",function(self,ev,p){
                 alert(p);
             })
