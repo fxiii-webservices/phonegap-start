@@ -3,6 +3,6 @@ requirejs.config({
 });
 
 require(["pairing/view"],function(Pairing){
-    var a = new Pairing();
+    a = new Pairing();
     $("#pairing").html(a.render().$el);
 });

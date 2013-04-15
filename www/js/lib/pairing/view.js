@@ -24,7 +24,7 @@ define(["text!pairing/template.html"], function (T) {
             
         },
         render: function() {
-            this.$el.html(this._t());
+            this.$el.html(this._t(this.model.toJSON()));
             return this;
         }
     
