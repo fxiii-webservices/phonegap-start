@@ -1,22 +1,4 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -33,82 +15,15 @@
                 <p class="status complete blink hide">Device is Ready</p>
             </div>
         </div>-->
-        <div id="player"></div>
-        <script src="http://cloud.github.com/downloads/uxebu/bonsai/bonsai-0.4.0.min.js"></script>
+        <div id="pairing"></div>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="http://forl3-fxiii.dotcloud.com/static/js/lib.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="bs" id="bs">
-        
-        rand = Math.random;
-        
-        var size = 25;
-        
-        for (var i = 0; i < 100; ++i) {
-          setTimeout(function() {
-            var r, x, y, thisSize = rand() * size + size;
-            switch (0 | Math.random()*3) {
-              case 0:
-                r = new Rect(0, 0, 0, 0);
-                break;
-              case 1:
-                r = new Star(0, 0, 0, 0 | rand() * 10 + 3, rand() + 1);
-                break;
-              case 2:
-                r = new Circle(0, 0, 0);
-            }
-            r.fill(color('red').randomize('h')).stroke('#000', 2).addTo(stage).attr({
-              x: rand() * 700,
-              y: rand() * 500
-            }).on('multi:pointerdown', function(e) {
-              // Catch new x/y at beginning of drag
-              x = this.attr('x');
-              y = this.attr('y');
-              r.addTo(r.parent);
-            })
-            .on('multi:drag', function(e){
-              this.attr({
-                x: x + e.diffX,
-                y: y + e.diffY
-              });
-            })
-            .emit('multi:pointerdown')
-            .animate('.5s', {
-              radius: thisSize,
-              width: thisSize,
-              height: thisSize
-            }, {
-              easing: 'elasticOut'
-            });
-          }, i * 50);
-        }
-        
-        </script>
-        <script type="text/javascript">
-            var player = document.getElementById('player');
-            
-            var w = 700;
-            var h = 500;
-            
-            var b = bonsai.run(player, {
-            code: document.getElementById('bs').innerHTML,
-            height: h,
-            width: w,
-            framerate: 40
-            });
-            
-            window.onresize = function() {
-               //player.getElementsByTagName("svg").style.width  = (window.innerWidth)  + 'px';
-           	//player.getElementsByTagName("svg").style.height = (window.innerHeight) + 'px';
-           	var ww = window.innerWidth - 4, wh = window.innerHeight - 4;
-           	var a = document.getElementById('player').getElementsByTagName("svg")[0];
-           	a.attributes.viewBox.value = [0,0,ww,wh].join(" ")
-           	a.attributes.width.value = ww;
-           	a.attributes.height.value = wh;
-            };
-            
-            window.onresize();
-
-        </script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.5/require.min.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/require-text/2.0.5/text.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0-rc.3/handlebars.min.js"></script>
+        <script type="text/javascript" src="js/lib/app.js"></script>
+       
     </body>
 </html>
