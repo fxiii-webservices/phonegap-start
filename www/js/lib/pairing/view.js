@@ -11,7 +11,7 @@ define(["text!pairing/template.html"], function (T) {
             this._t = Handlebars.compile(T);
             this.model = new Backbone.Model();
             this.model.set({
-                code:"click to pair");
+                code:"click to pair"});
             this.model.on("change",this.render);
         },
         ask: function(){
