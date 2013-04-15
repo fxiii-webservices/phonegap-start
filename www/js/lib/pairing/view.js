@@ -21,9 +21,9 @@ define(["text!pairing/template.html"], function (T) {
           }
         },
         pair: function(){
-            var FMS = new Forlr.FSM(_Forlr.protocols.request);
-            FMS.start(Forlr,this.model.get("code"));
-            FMS.on("got",function(self,ev,p){
+            var FSM = new Forlr.FSM(_Forlr.protocols.request);
+            FSM.start(Forlr,this.model.get("code"));
+            FSM.on("got",function(self,ev,p){
                 alert(p);
             })
             FSM.on("timeout",_l);
