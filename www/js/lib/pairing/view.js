@@ -7,11 +7,11 @@ define(["text!pairing/template.html"], function (T) {
             "click h1":"ask"
         },
         initialize: function(){
+            _.bindAll(this,"ask","pair","render");
             this._t = Handlebars.compile(T);
             this.model = new Backbone.Model();
             this.model.set("code",Math.random().toString().slice(2,11));
-            this.model.on("change:code",this.render);            
-            _.bindAll(this,"ask","pair","render");
+            this.model.on("change:code",this.render);
         },
         ask: function(){
           var x = prompt("setCode");
